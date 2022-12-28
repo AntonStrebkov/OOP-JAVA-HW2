@@ -5,7 +5,8 @@ public class Dog extends Animals {
     public Dog(String name) {
         super(name);
     }
-    public Dog(){
+
+    public Dog() {
         this("Безымянная собака");
     }
 
@@ -16,13 +17,16 @@ public class Dog extends Animals {
 
     @Override
     public void goToOwner(String command) {
-
+        System.out.printf("Собачка %s подходит\n", name);
     }
 
     @Override
     public void hearName(String voice) {
         if (voice.contains(this.name)) {
             toSay();
+            goToOwner(voice);
+        } else {
+            System.out.printf("%s не реагирует\n", name);
         }
     }
 }

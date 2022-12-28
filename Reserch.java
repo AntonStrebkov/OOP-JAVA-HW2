@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class Reserch implements Comparator<Person> {
+public class Reserch{
     ArrayList<String> result = new ArrayList<>();
     ArrayList<Node> tree;
 
@@ -45,10 +45,4 @@ public class Reserch implements Comparator<Person> {
         }
         return result;
     }
-
-    @Override
-    public int compare(Person arg0, Person arg1) {
-        return arg0.getAge() - arg1.getAge();
-    }
-
 }

@@ -21,11 +21,13 @@ public class Person implements Comparable<Person>{
     }
 
     @Override
-    public int compareTo(Person o) {
-        return this.getFullName().compareTo(o.getFullName());
+    public String toString() {
+        return fullName + " , " + age;
     }
 
-    public int compare(Person o){
-        return 0;
+    @Override
+    public int compareTo(Person o) {
+        return this.getAge() - o.getAge();
     }
+
 }

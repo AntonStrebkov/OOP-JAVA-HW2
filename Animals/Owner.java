@@ -2,7 +2,7 @@ package Animals;
 
 import java.util.Scanner;
 
-public class Owner implements CallPet {
+public class Owner{
     private String name;
     private int year;
 
@@ -12,8 +12,7 @@ public class Owner implements CallPet {
         return command;
     }
 
-    @Override
-    public void callPet(Animals[] animals, String phrase) {
+    public void callable(Animals[] animals, String phrase) {
         if (animals.length > 0) {
             for (Animals pet : animals) {
                 pet.hearName(phrase);
@@ -40,7 +39,7 @@ public class Owner implements CallPet {
 
     public void allPetsCall(Animals[] pets, String voice) {
         System.out.println("Реакция всех животных на фразу: " + voice);
-        callPet(pets, voice);
+        callable(pets, voice);
         System.out.println("");
     }
 }

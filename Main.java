@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
         Person irina = new PersonWoman("Ирина", 35);
@@ -10,15 +12,15 @@ public class Main {
         Person lybovMikhailovna = new PersonWoman("Любовь Михайловна", 60);
         Person kirillMaximovich = new PersonMan("Кирилл Максимович", 56);
         GeoTree gt = new GeoTree();
-        gt.append(irina, jane);
-        gt.append(irina, ivan);
-        gt.append(vasya, petr);
-        gt.append(vasya, masha);
-        gt.addendBS(ivan, jane);
-        gt.addendBS(petr, masha);
-        gt.appendG(viktorFedorovich, irina);
-        gt.appendG(lybovMikhailovna, vasya);
-        gt.appendG(kirillMaximovich,vasya);
+        gt.append(irina, jane, Relationship.parent, Relationship.children);
+        gt.append(irina, ivan, Relationship.parent, Relationship.children);
+        gt.append(vasya, petr, Relationship.parent, Relationship.children);
+        gt.append(vasya, masha, Relationship.parent, Relationship.children);
+        gt.append(ivan, jane, Relationship.brother, Relationship.sister);
+        gt.append(petr, masha, Relationship.brother, Relationship.sister);
+        gt.append(viktorFedorovich, irina, Relationship.grandparents, Relationship.grandchildren);
+        gt.append(lybovMikhailovna, vasya, Relationship.grandparents, Relationship.grandchildren);
+        gt.append(kirillMaximovich,vasya, Relationship.grandparents, Relationship.grandchildren);
 
 
         System.out.println(new Reserch(gt).spend(irina, Relationship.parent) + " - дети Ирины");
@@ -32,6 +34,20 @@ public class Main {
         System.out.println(writeF.spend());
 
         System.out.println(((Person) irina).getGender());
+
+        if(irina.compareTo(vasya) < 0)
+        System.out.printf("%s Моложе Ваня \n", irina.getFullName());
+
+        ArrayList<Person> family = new ArrayList<>();
+        family.add(irina); family.add(vasya); family.add(masha); family.add(jane);
+        family.add(ivan); family.add(petr);
+        family.add(viktorFedorovich);
+        family.add(lybovMikhailovna);
+        family.add(kirillMaximovich);
+        System.out.println(family);
+        family.sort(new PersonAgeComparator());
+        System.out.println(family);
+
 
 
 
